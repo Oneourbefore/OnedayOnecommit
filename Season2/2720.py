@@ -10,11 +10,9 @@ for _ in range(testcase):
     if money >= 25:
         q=money//25
         money=money%25
-    print(money)
     if money >= 10:
         d=money//10
         money=money%10
-    print(money)
 
     if money >= 5:
         n=money//5
