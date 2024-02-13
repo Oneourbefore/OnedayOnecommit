@@ -1,3 +1,3 @@
-a=['1','2','3','4']
-result="+".join(a)
-print(result)
+list1=['nae','nam']
+list1.pop('nae')
+print(list1)
