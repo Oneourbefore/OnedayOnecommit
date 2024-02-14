@@ -29,12 +29,13 @@ for _ in range(a):
         print(k)
     else:
         list_down.append(popnumber)
-        for _ in range(len(list_down)):
-            print(list_down)
-            print(k)
-            if list_down[-1]==k:
-                k=k+1
-                list_down.pop()
+        
+    for _ in range(len(list_down)):
+        print(list_down)
+        print(k)
+        if list_down[-1]==k:
+            k=k+1
+            list_down.pop()
 
 if len(list_right)==0 and len(list_down) ==0:
     print("Nice")
