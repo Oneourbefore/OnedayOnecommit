@@ -13,7 +13,7 @@ d=deque()
 
 a=int(sys.stdin.readline())
 for _ in range(a):
-    inputnum=input().split()
+    inputnum=sys.stdin.readline().split()
     if int(inputnum[0])==6:
         if len(d)==0:
             print(1)
