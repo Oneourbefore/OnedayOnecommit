@@ -1,31 +1,40 @@
 # from collections import deque
 # import sys
 # d=deque()
-# # 1 X: 정수 X를 덱의 앞에 넣는다. (1 ≤ X ≤ 100,000)
-# # 2 X: 정수 X를 덱의 뒤에 넣는다. (1 ≤ X ≤ 100,000)
-# # 3: 덱에 정수가 있다면 맨 앞의 정수를 빼고 출력한다. 없다면 -1을 대신 출력한다.
-# # 4: 덱에 정수가 있다면 맨 뒤의 정수를 빼고 출력한다. 없다면 -1을 대신 출력한다.
-# # 5: 덱에 들어있는 정수의 개수를 출력한다.
-# # 6: 덱이 비어있으면 1, 아니면 0을 출력한다.
-# # 7: 덱에 정수가 있다면 맨 앞의 정수를 출력한다. 없다면 -1을 대신 출력한다.
-# # 8: 덱에 정수가 있다면 맨 뒤의 정수를 출력한다. 없다면 -1을 대신 출력한다.
-# 1번부터 N번까지 N개의 풍선이 원형으로 놓여 있고. i번 풍선의 오른쪽에는 i+1번 풍선이 있고, 왼쪽에는 i-1번 풍선이 있다. 단, 1번 풍선의 왼쪽에 N번 풍선이 있고, N번 풍선의 오른쪽에 1번 풍선이 있다. 각 풍선 안에는 종이가 하나 들어있고, 종이에는 -N보다 크거나 같고, N보다 작거나 같은 정수가 하나 적혀있다. 이 풍선들을 다음과 같은 규칙으로 터뜨린다.
-# 우선, 제일 처음에는 1번 풍선을 터뜨린다. 다음에는 풍선 안에 있는 종이를 꺼내어 그 종이에 적혀있는 값만큼 이동하여 다음 풍선을 터뜨린다. 양수가 적혀 있을 경우에는 오른쪽으로, 음수가 적혀 있을 때는 왼쪽으로 이동한다. 이동할 때에는 이미 터진 풍선은 빼고 이동한다.
-# 예를 들어 다섯 개의 풍선 안에 차례로 3, 2, 1, -3, -1이 적혀 있었다고 하자. 이 경우 3이 적혀 있는 1번 풍선, -3이 적혀 있는 4번 풍선, -1이 적혀 있는 5번 풍선, 1이 적혀 있는 3번 풍선, 2가 적혀 있는 2번 풍선의 순서대로 터지게 된다.
-# 만약에 지금 현재 3,2,1,-3,-1 이라면 
 # 3 -> -3 -> -1 -> 1 -> 2 
+# -1 3 2 1 /3 2 1 -1
 # deque에서 사용되는 rotate 메서드를 사용하기?
+# 만약에 숫자 3이 처음이면 오른쪽으로 3칸 이동하잖아 3이 있는 상태에서, 그리고 3을 지운단말이야 -3 -1 2 1   -1 2 1 / 1 -1 2
 from collections import deque
 import sys
+
 anslist=[]
+real_ans_list=[]
 a=int(sys.stdin.readline())
-usedeque=deque(list(map(str,sys.stdin.readline().split())))
-firstnum=int(usedeque.popleft())
+
+movelist = deque([i for i in range(1,a+1)]) # 1 , 2 , 3 , 4 , 5 
+usedeque = deque(list(map(int,sys.stdin.readline().split())))
+
+firstnum = usedeque.popleft()
+movenum = movelist.popleft()
 anslist.append(firstnum)
+real_ans_list.append(movenum)
+
 for _ in range(a-1):
     # usedeque = [3,2,1,-3,-1] -> rotate(1) -> [-1,3,2,1,-3]
-    usedeque.rotate(firstnum-1)
-    firstnum=int(usedeque.popleft())
-    anslist.append(firstnum)
+    if firstnum>0:
+        usedeque.rotate(-(firstnum-1))
+        movelist.rotate(-(firstnum-1))
+        firstnum=usedeque.popleft()
+        movenum=movelist.popleft()
+        anslist.append(firstnum)
+        real_ans_list.append(movenum)
+    else:
+        usedeque.rotate(-firstnum)
+        movelist.rotate(-firstnum)
 
-print(anslist)
+        firstnum=usedeque.popleft()
+        movenum=movelist.popleft()
+        anslist.append(firstnum)
+        real_ans_list.append(movenum)
+print(*real_ans_list)
