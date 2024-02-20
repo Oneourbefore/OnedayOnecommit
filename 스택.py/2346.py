@@ -17,7 +17,6 @@ usedeque = deque(list(map(int,sys.stdin.readline().split())))
 
 firstnum = usedeque.popleft()
 movenum = movelist.popleft()
-anslist.append(firstnum)
 real_ans_list.append(movenum)
 
 for _ in range(a-1):
@@ -27,7 +26,6 @@ for _ in range(a-1):
         movelist.rotate(-(firstnum-1))
         firstnum=usedeque.popleft()
         movenum=movelist.popleft()
-        anslist.append(firstnum)
         real_ans_list.append(movenum)
     else:
         usedeque.rotate(-firstnum)
@@ -35,6 +33,5 @@ for _ in range(a-1):
 
         firstnum=usedeque.popleft()
         movenum=movelist.popleft()
-        anslist.append(firstnum)
         real_ans_list.append(movenum)
 print(*real_ans_list)
