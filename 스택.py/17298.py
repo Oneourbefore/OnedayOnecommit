@@ -8,7 +8,9 @@ arr = list(map(int, input().split()))
 #ans=[3,-1,-1,-1]
 stack = []
 stack.append(0)
+
 answer = [-1 for i in range(n)]
+
 #stack=[1,2]
 for i in range(1,n):
     while stack and arr[stack[-1]] < arr[i]:
