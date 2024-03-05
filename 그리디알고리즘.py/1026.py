@@ -1,6 +1,13 @@
-num = int(input())
-list_a = list(map(int, input().split()))
-list_b = list(map(int, input().split()))
+n = int(input())
 
-    ㅣ
-            
+a_list = list(map(int, input().split()))
+b_list = list(map(int, input().split()))
+
+sorted_a = sorted(a_list, reverse=True)
+sorted_b = sorted(b_list)
+
+s = 0
+for i in range(n):
+    s += sorted_a[i] * sorted_b[i]
+
+print(s)
