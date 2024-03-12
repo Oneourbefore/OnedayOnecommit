@@ -1,3 +1,4 @@
+# greedy
 def solution(n):
     answer=0
     listans=[ i for i in range(1,n+1)]

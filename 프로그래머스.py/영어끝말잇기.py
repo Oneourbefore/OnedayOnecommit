@@ -37,7 +37,7 @@ def solution(n, words):
             answer.append(word)
             cnt=cnt+1
         else:
-            return [1+cnt%n,1+cnt//n]
+            return [cnt%n,1+cnt//n]
     return [0,0]
 print(solution(3,["tank", "cick", "know", "wheel", "land", "dream", "mother", "robot", "tank","korea","able"]))
 # 5 번째 

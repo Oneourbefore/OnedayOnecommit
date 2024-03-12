@@ -5,22 +5,17 @@
 # 11110 16 + 8 + 4 + 2 = 30
 # 100111 32 + 
 # 조합을 사용하여 
-def convert2binary(num):
-    temp = []
+def check(x):
+    binary = bin(x) # 이진수로 변환하기
+    one = binary.count('1') # 개수를 셈
+    return one  # 개수를 저장함 One이라는 변수에 저장해놓기 
 
+def solution(n):
+    # 78 
+    # num = 3
+    answer = n
+    num = check(n)
     while True:
-        remainder = num % 2
-        num = num // 2
-        temp.append(remainder)
-        
-        if num < 2:
-            temp.append(num)
-            break
-
-    temp.reverse()
-    result = "".join(map(str, temp))
-    return result
-
-num = 25
-binary_num = convert2binary(num)
-print(binary_num)
+        answer += 1 # 값을 높이면서 1의 갯수가 같은지 확인하기 
+        if int(check(answer)) == num:
+            return answer
