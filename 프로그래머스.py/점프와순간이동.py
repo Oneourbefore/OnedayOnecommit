@@ -23,7 +23,6 @@ def solution(n):
         else:
             n=n-1
             answer=answer+1
-    
     return answer
 print(solution(5000))
 # 5 -> 4 +1 -> 2  - > 1

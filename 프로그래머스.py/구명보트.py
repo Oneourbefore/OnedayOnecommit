@@ -35,7 +35,6 @@
 def solution(people, limit) :
     answer = 0
     people.sort()
-# peoplelist=[70,50,20,10] 200 
     a = 0
     b = len(people) - 1
     while a < b : # a=0 , b=3 
@@ -45,3 +44,4 @@ def solution(people, limit) :
         b -= 1
     return len(people) - answer
 print(solution([70, 50, 80, 50],100))
+# 50 50 70 80 => 
